@@ -1,17 +1,19 @@
+package command;
+
 public class Main {
     public static void main(String[] args) {
-        OrderFactory orderFactory = new OrderFactory();
+        Light light = new Light();
+        Fan fan = new Fan();
 
-  
-        Order electronicOrder = orderFactory.createOrder("Electronic");
-        electronicOrder.processOrder();
+        CommandConfic  commandConficLight = new CommandConfic(light);
 
-        
-        Order consumerProductOrder = orderFactory.createOrder("ConsumerProduct");
-        consumerProductOrder.processOrder();
+      CommandConfic commandConficFan = new CommandConfic(fan);
 
-      
-        Order foodOrder = orderFactory.createOrder("Food");
-        foodOrder.processOrder();
+
+        RemotControll remotControll = new RemotControll(commandConficFan);
+        remotControll.setCommandConfic(commandConficLight);
+
+     remotControll.onBUttonPress(1,"on");
+
     }
 }
